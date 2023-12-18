@@ -53,9 +53,9 @@ import (
 	commonv1 "d7y.io/api/v2/pkg/apis/common/v1"
 	dfdaemonv1 "d7y.io/api/v2/pkg/apis/dfdaemon/v1"
 	schedulerv1 "d7y.io/api/v2/pkg/apis/scheduler/v1"
-
 	"d7y.io/dragonfly/v2/client/config"
 	"d7y.io/dragonfly/v2/client/daemon/peer"
+	"d7y.io/dragonfly/v2/client/daemon/pex"
 	"d7y.io/dragonfly/v2/client/daemon/storage"
 	"d7y.io/dragonfly/v2/client/util"
 	"d7y.io/dragonfly/v2/internal/dferrors"
@@ -82,6 +82,9 @@ type server struct {
 	peerHost        *schedulerv1.PeerHost
 	peerTaskManager peer.TaskManager
 	storageManager  storage.Manager
+
+	peerExchangeMember pex.PeerExchangeMember
+	peerExchangeSync   pex.PeerExchangeSynchronizer
 
 	healthServer   *health.Server
 	downloadServer *grpc.Server
