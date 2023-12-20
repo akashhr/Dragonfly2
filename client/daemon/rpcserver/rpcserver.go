@@ -82,9 +82,7 @@ type server struct {
 	peerHost        *schedulerv1.PeerHost
 	peerTaskManager peer.TaskManager
 	storageManager  storage.Manager
-
-	peerExchangeMember pex.PeerExchangeMember
-	peerExchangeSync   pex.PeerExchangeSynchronizer
+	peerExchanger   pex.PeerExchangeRPC
 
 	healthServer   *health.Server
 	downloadServer *grpc.Server
